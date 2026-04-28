@@ -1,12 +1,14 @@
 # Work loader (video)
 
-The loader is **a short looping video** (`loader.mp4`). Everything around it—size, shape, ring, backdrop, when it plays—is **styling and app logic** you control.
+The loader is **a short looping video** (`loader.mp4`). Everything around it — size, shape, ring, backdrop, when it plays — is **styling and app logic** you control.
 
-**Full reference implementation:** see [`index.html`](./index.html) for layout, CSS (circular clip, optional spinning ring), and play / pause / tap-to-toggle behavior.
+**Full reference implementation:** see `[index.html](./index.html)` for layout, CSS (circular clip, optional spinning ring), and play / pause / tap-to-toggle behavior.
 
 ---
 
-## Minimal HTML
+## Plain
+
+<video src="./web-loader-example.mp4" controls playsinline width="400"></video>
 
 Replace `src` with your own URL or path if you self-host the file.
 
@@ -32,7 +34,7 @@ To start playback from script (after a user gesture if the browser requires it),
 
 ---
 
-## Minimal React
+## React
 
 ```tsx
 import { useRef } from "react";
@@ -59,6 +61,48 @@ export function LoaderVideo() {
 ```
 
 Use `play()` from a click handler or after your app is ready; avoid assuming autoplay will succeed without `muted` (see below).
+
+---
+
+## React Native
+
+<video src="./react-native-loader-example.mp4" controls playsinline width="400"></video>
+
+```tsx
+import { Pressable, View } from 'react-native';
+import { useVideoPlayer, VideoView } from 'react-native-video';
+
+export const VideoSampleCode = () => {
+  const player = useVideoPlayer(
+    'https://raw.githubusercontent.com/NotGeorgeMessier/work-loader/main/loader.mp4',
+    _player => {
+      _player.preload();
+    },
+  );
+
+  return (
+    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <Pressable
+        onPress={() => {
+          player.seekTo(0);
+          player.play();
+        }}
+      >
+        <VideoView
+          player={player}
+          resizeMode="cover"
+          style={{
+            width: 60,
+            aspectRatio: 1,
+            borderRadius: 1000,
+            overflow: 'hidden',
+          }}
+        />
+      </Pressable>
+    </View>
+  );
+};
+```
 
 ---
 
