@@ -4,19 +4,11 @@ The loader is **a compact video WITH SOUND** [loader.mp4](./loader.mp4). Everyth
 
 **Full reference implementation:** see [index.html](./index.html) for layout, CSS (circular clip, optional spinning ring), and play, pause, tap-to-toggle behavior.
 
-### Preview
-
-**Web**
-
-![Work loader — web](./web-example.gif)
-
-**React Native**
-
-![Work loader — React Native](./react-native-example.gif)
-
 ---
 
 ## Plain
+
+![Work loader — web](./web-example.gif)
 
 Replace `src` with your own URL or path if you self-host the file.
 
@@ -73,6 +65,8 @@ Use `play()` from a click handler or after your app is ready; avoid assuming aut
 ---
 
 ## React Native
+
+![Work loader — React Native](./react-native-example.gif)
 
 ```tsx
 import { Pressable, View } from 'react-native';
