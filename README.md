@@ -1,8 +1,18 @@
-# Work loader
+# Work loader 
 
-The loader is **a compact video** [loader.mp4](./loader.mp4). Everything around it — size, shape, ring, backdrop, when it plays — is **styling and app logic** you control.
+The loader is **a compact video WITH SOUND** [loader.mp4](./loader.mp4). Everything around it — size, shape, ring, backdrop, when it plays — is **styling and app logic** you control.
 
 **Full reference implementation:** see [index.html](./index.html) for layout, CSS (circular clip, optional spinning ring), and play, pause, tap-to-toggle behavior.
+
+### Preview
+
+**Web**
+
+![Work loader — web](./web-example.gif)
+
+**React Native**
+
+![Work loader — React Native](./react-native-example.gif)
 
 ---
 
