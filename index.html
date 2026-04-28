@@ -13,16 +13,87 @@
       min-height: 100vh;
       padding: 1rem;
     }
-    iframe {
-      border: 0;
+    .embed-row { display: inline-flex; align-items: center; gap: 8px; }
+    .embed-shell {
+      position: relative;
       width: 32px;
-      aspect-ratio: 1;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .embed-shell video {
+      width: calc(100% - 8px);
+      height: calc(100% - 8px);
       border-radius: 50%;
-      overflow: hidden;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+    .embed-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-top-color: rgba(255, 255, 255, 0.85);
+      animation: embed-spin 0.95s linear infinite;
+      pointer-events: none;
+    }
+    .embed-ctrl {
+      padding: 2px 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.75);
+      font: inherit;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .embed-ctrl:hover {
+      border-color: rgba(255, 255, 255, 0.45);
+      color: #fff;
+    }
+    @keyframes embed-spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <iframe src="embed.html" title="Video" allow="autoplay; fullscreen"></iframe>
+  <div class="embed-row">
+    <div class="embed-shell">
+      <span class="embed-ring" aria-hidden="true"></span>
+      <video
+        id="v"
+        src="https://raw.githubusercontent.com/NotGeorgeMessier/work-loader/main/loader.mp4"
+        playsinline
+        preload="auto"
+      ></video>
+    </div>
+    <button type="button" class="embed-ctrl" id="embed-btn-play">Play</button>
+    <button type="button" class="embed-ctrl" id="embed-btn-pause">Pause</button>
+  </div>
+  <script>
+    (function () {
+      var el = document.getElementById('v');
+      function shellPlay() {
+        if (el.ended) el.currentTime = 0;
+        var p = el.play();
+        if (p) p.catch(function () {});
+        return p;
+      }
+      function shellPause() {
+        el.pause();
+      }
+      window.shellPlay = shellPlay;
+      window.shellPause = shellPause;
+      document.getElementById('embed-btn-play').onclick = shellPlay;
+      document.getElementById('embed-btn-pause').onclick = shellPause;
+      document.querySelector('.embed-shell').addEventListener('pointerdown', function (ev) {
+        if (ev.target !== el) return;
+        if (el.paused || el.ended) shellPlay();
+        else shellPause();
+      });
+    })();
+  </script>
 </body>
 </html>
