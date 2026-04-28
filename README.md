@@ -8,7 +8,7 @@ The loader is **a short looping video** (`loader.mp4`). Everything around it —
 
 ## Plain
 
-<video src="./web-loader-example.mp4" controls playsinline width="400"></video>
+<video src="https://raw.githubusercontent.com/NotGeorgeMessier/work-loader/main/web-loader-example.mp4" controls playsinline width="400"></video>
 
 Replace `src` with your own URL or path if you self-host the file.
 
@@ -66,7 +66,7 @@ Use `play()` from a click handler or after your app is ready; avoid assuming aut
 
 ## React Native
 
-<video src="./react-native-loader-example.mp4" controls playsinline width="400"></video>
+<video src="https://raw.githubusercontent.com/NotGeorgeMessier/work-loader/main/react-native-loader-example.mp4" controls playsinline width="400"></video>
 
 ```tsx
 import { Pressable, View } from 'react-native';
