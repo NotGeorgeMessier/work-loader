@@ -1,14 +1,12 @@
-# Work loader (video)
+# Work loader
 
-The loader is **a short looping video** (`loader.mp4`). Everything around it — size, shape, ring, backdrop, when it plays — is **styling and app logic** you control.
+The loader is **a compact video** [loader.mp4](./loader.mp4). Everything around it — size, shape, ring, backdrop, when it plays — is **styling and app logic** you control.
 
-**Full reference implementation:** see `[index.html](./index.html)` for layout, CSS (circular clip, optional spinning ring), and play / pause / tap-to-toggle behavior.
+**Full reference implementation:** see [index.html](./index.html) for layout, CSS (circular clip, optional spinning ring), and play, pause, tap-to-toggle behavior.
 
 ---
 
 ## Plain
-
-<video src="https://raw.githubusercontent.com/NotGeorgeMessier/work-loader/main/web-loader-example.mp4" controls playsinline width="400"></video>
 
 Replace `src` with your own URL or path if you self-host the file.
 
@@ -65,8 +63,6 @@ Use `play()` from a click handler or after your app is ready; avoid assuming aut
 ---
 
 ## React Native
-
-<video src="https://raw.githubusercontent.com/NotGeorgeMessier/work-loader/main/react-native-loader-example.mp4" controls playsinline width="400"></video>
 
 ```tsx
 import { Pressable, View } from 'react-native';
